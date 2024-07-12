@@ -1,0 +1,43 @@
+def student_grades():
+    grades = {}
+
+    while True:
+        subject = input("Enter subject name (or type 'done' to finish): ")
+        if subject.lower() == 'done':
+            break
+        grade = float(input(f"Enter grade for {subject}: "))
+        grades[subject] = grade
+
+    if not grades:
+        print("No grades entered.")
+        return
+
+    total_grade = sum(grades.values())
+    number_of_subjects = len(grades)
+    average_grade = total_grade / number_of_subjects
+
+    # Calculate letter grade and GPA
+    if average_grade >= 90:
+        letter_grade = 'A'
+        gpa = 4.0
+    elif average_grade >= 80:
+        letter_grade = 'B'
+        gpa = 3.0
+    elif average_grade >= 70:
+        letter_grade = 'C'
+        gpa = 2.0
+    elif average_grade >= 60:
+        letter_grade = 'D'
+        gpa = 1.0
+    else:
+        letter_grade = 'F'
+        gpa = 0.0
+
+    print(f"\nOverall Grade Report:")
+    for subject, grade in grades.items():
+        print(f"{subject}: {grade}")
+    print(f"Average Grade: {average_grade}")
+    print(f"Letter Grade: {letter_grade}")
+    print(f"GPA: {gpa}")
+
+student_grades()
